@@ -4,10 +4,11 @@ This is a guide to downloading public datasets from Distributed Denial of Secret
 
 ## The Short Version for Experts
 
-You can view [a list of all our torrents here.](https://torrents.ddosecrets.com/releases.xml) The list is available as CSV, RSS, and as individual download buttons for each magnet link. If your torrent client supports RSS feeds ([uTorrent](https://www.utorrent.com/) and [qBittorrent](https://www.qbittorrent.org/) both do) then [subscribe to our feed](https://torrents.ddosecrets.com/releases.xml) to view all our magnet links in your client. If your torrent client does _not_ support RSS feeds (such as [Transmission](https://transmissionbt.com/)) then you may want to add a cronjob to download the CSV file of releases regularly and add them. The following script will add all new torrents to transmission if it's running as a daemon:
+You can view [a list of all our torrents here.](https://torrents.ddosecrets.com/) The list is available as CSV, RSS, and as individual download buttons for each magnet link. If your torrent client supports RSS feeds ([uTorrent](https://www.utorrent.com/) and [qBittorrent](https://www.qbittorrent.org/) both do) then [subscribe to our feed](https://torrents.ddosecrets.com/releases.xml) to view all our magnet links in your client. If your torrent client does _not_ support RSS feeds (such as [Transmission](https://transmissionbt.com/)) then you may want to add a cronjob to download the CSV file of releases regularly and add them. The following line will add all new torrents to transmission if it's running as a daemon:
 
-    #!/usr/bin/env bash
-    curl --silent https://torrents.ddosecrets.com/magnets.csv | grep "magnet:" | cut -d, -f3- | while read -r; do transmission-remote -a "$REPLY"; done
+```bash
+curl --silent https://torrents.ddosecrets.com/magnets.csv | grep "magnet:" | cut -d, -f3- | while read -r; do transmission-remote -a "$REPLY"; done
+```
 
 ## Step By Step
 
@@ -29,7 +30,7 @@ Now an RSS feed tab should appear on the main window. Select it and press "New s
 
 ![RSS New Subscription](images/4.png)
 
-Add [our RSS for DDoSecrets public releases](https://torrents.ddosecrets.com/releases.xml):
+Add [our RSS feed URL for DDoSecrets public releases](https://torrents.ddosecrets.com/releases.xml):
 
 ![Add the subscription URL](images/5.png)
 
