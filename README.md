@@ -7,7 +7,7 @@ This is a guide to downloading public datasets from Distributed Denial of Secret
 You can view [a list of all our torrents here.](https://torrents.ddosecrets.com/) The list is available as CSV, RSS, and as individual download buttons for each magnet link. If your torrent client supports RSS feeds ([uTorrent](https://www.utorrent.com/) and [qBittorrent](https://www.qbittorrent.org/) both do) then [subscribe to our feed](https://torrents.ddosecrets.com/releases.xml) to view all our magnet links in your client. If your torrent client does _not_ support RSS feeds (such as [Transmission](https://transmissionbt.com/)) then you may want to add a cronjob to download the CSV file of releases regularly and add them. The following line will add all new torrents to transmission if it's running as a daemon:
 
 ```bash
-curl --silent https://torrents.ddosecrets.com/magnets.csv | grep "magnet:" | cut -d, -f3- | while read -r; do transmission-remote -a "$REPLY"; done
+curl --silent https://torrents.ddosecrets.com/magnets.csv | grep "magnet:" | cut -d, -f2- | while read -r; do transmission-remote -a "$REPLY"; done
 ```
 
 ## Step By Step
